@@ -1,0 +1,26 @@
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        if len(nums) <= 1:
+            return nums
+
+        i = len(nums) - 2
+
+        while i >= 0 and nums[i] >= nums[i + 1]:
+            i -= 1
+
+        if i >= 0:
+            j = len(nums) - 1
+
+            while j >= 0 and nums[j] <= nums[i]:
+                j -= 1
+
+            temp = nums[j]
+            nums[j] = nums[i]
+            nums[i] = temp
+
+
+        nums[i + 1: ] = reversed(nums[i + 1: ])
+
